@@ -1,6 +1,6 @@
 import './App.css';
 import { useReducer, useState } from 'react';
-import reducer, { ADICIONAR_FRASE } from './reducer';
+import reducer, { ADICIONAR_FRASE, EXCLUIR_FRASE } from './reducer';
 
 function App() {
   const [frase, setFrase] = useState('');
@@ -16,6 +16,13 @@ function App() {
     setFrase('');
   }
 
+  function excluir(fraseExcluida) {
+    dispatch({
+      tipo: EXCLUIR_FRASE,
+      frase: fraseExcluida
+    })
+  }
+
   return (
     <div className="App">
       <form onSubmit={salvarFrase}>
@@ -29,7 +36,7 @@ function App() {
         <button>Salvar frase</button>
       </form>
       {estado.frases.map((fraseAtual) =>
-        (<p key={fraseAtual.id}>{fraseAtual.id} - {fraseAtual.texto}</p>)
+        (<p key={fraseAtual.id}>{fraseAtual.id} - {fraseAtual.texto} <button onClick={() => excluir(fraseAtual)}>excluir</button></p>)
       )}
     </div>
   );

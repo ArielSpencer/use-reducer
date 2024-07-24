@@ -1,4 +1,5 @@
 export const ADICIONAR_FRASE = "ADICIONAR_FRASE"
+export const EXCLUIR_FRASE = "EXCLUIR_FRASE"
 
 const reducer = (estado, acao) => {
   switch (acao.tipo) {
@@ -15,6 +16,12 @@ const reducer = (estado, acao) => {
         frases: [...estado.frases, { id: estado.idCounter, texto: acao.frase }],
         idCounter: estado.idCounter + 1
       };
+
+    case EXCLUIR_FRASE:
+      return {
+        ...estado,
+        frases: estado.frases.filter(frase => frase.id !== acao.frase.id)
+      }
 
     default:
       return estado
