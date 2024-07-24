@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
 
@@ -11,6 +10,7 @@ function App() {
 
   const [frase, setFrase] = useState('');
   const [frases, setFrases] = useState([])
+  const [idCounter, setIdCounter] = useState(1);
 
   function salvarFrase(evento) {
     evento.preventDefault()
@@ -22,7 +22,9 @@ function App() {
       alert("Não são permitidas frases duplicadas.")
       return
     }
-    setFrases([...frases, frase])
+    setFrases([...frases, { id: idCounter, texto: frase }])
+    setIdCounter(idCounter + 1);
+    setFrase('');
   }
 
   return (
@@ -37,7 +39,9 @@ function App() {
         <br />
         <button>Salvar frase</button>
       </form>
-      {frases.map((fraseAtual, index) => <p key={index}>{fraseAtual}</p>)}
+      {frases.map((fraseAtual, id) =>
+        (<p key={fraseAtual.id}>{fraseAtual.id} - {fraseAtual.texto}</p>)
+      )}
     </div>
   );
 }
