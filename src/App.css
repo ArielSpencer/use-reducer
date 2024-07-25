@@ -1,3 +1,8 @@
+* {
+  margin: 0;
+  padding: 0 2%;
+}
+
 .App {
   text-align: center;
 }
@@ -5,6 +10,83 @@
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+body {
+  background-color: #F1F1F1;
+}
+
+h1 {
+  padding: 3vh;
+  color: #7878AB;
+  text-transform: uppercase;
+  font-size: 2em;
+  text-align: center;
+}
+
+p {
+  font-size: 1em;
+  font-weight: 300;
+  text-align: left;
+  color: #282c34;
+}
+
+.form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: end;
+  margin: 30px 0 50px;
+}
+
+textarea {
+  padding: 20px 30px;
+  margin-bottom: 15px;
+  width: 60%;
+  height: 70px;
+  color: #282c34;
+  font-weight: 500;
+  font-size: 1.5em;
+
+  background: #F5F5FA;
+  /* Inner shadow 2 */
+  box-shadow: inset -2px -2px 4px rgba(255, 255, 255, 0.5), inset 2px 2px 4px rgba(170, 170, 204, 0.25), inset 5px 5px 10px rgba(170, 170, 204, 0.5), inset -5px -5px 10px #FFFFFF;
+  border-radius: 5px;
+  border: none
+}
+
+.cat {
+  max-height: 53px;
+}
+
+.btn-add,
+.btn-remove {
+  padding: 8px 16px;
+  height: auto;
+  width: auto;
+  margin: 2vh;
+
+  color: #7878AB;
+  font-weight: bold;
+
+  background: #F5F5FA;
+  border-radius: 32px;
+  border: 1px solid #F5F5FA;
+  box-shadow: -5px -5px 10px rgba(255, 255, 255, 0.5), 5px 5px 10px rgba(170, 170, 204, 0.25), 10px 10px 20px rgba(170, 170, 204, 0.5), -10px -10px 20px #FFFFFF;
+}
+
+.btn-add:hover {
+  background: #E5E5F0;
+  border-color: #E5E5F0;
+  box-shadow: 5px 5px 10px rgba(170, 170, 204, 0.5), -5px -5px 10px #FFFFFF;
+}
+
+.btn-remove:hover {
+  background: #FF7262;
+  border-color: #FF7262;
+  box-shadow: 5px 5px 10px rgba(170, 170, 204, 0.5), -5px -5px 10px #FFFFFF;
+
+  color: #F5F5FA;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -32,6 +114,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }

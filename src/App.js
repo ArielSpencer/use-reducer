@@ -25,20 +25,35 @@ function App() {
 
   return (
     <div className="App">
-      <form onSubmit={salvarFrase}>
+      <h1>Crie sua lista dinâmica</h1>
+      <form onSubmit={salvarFrase} className="form">
         <textarea
           required
           value={frase}
           onChange={evento => setFrase(evento.target.value)}
           placeholder="Digite sua frase..."
         />
-        <br />
-        <button>Salvar frase</button>
+        <div className='container__cat'>
+          <img
+            src="./kitty.svg"
+            alt="gato segurando um lápis"
+            className="cat"
+          />
+          <button className="btn-add">Salvar frase</button>
+        </div>
       </form>
-      {estado.frases.map((fraseAtual) =>
-        (<p key={fraseAtual.id}>{fraseAtual.id} - {fraseAtual.texto} <button onClick={() => excluir(fraseAtual)}>excluir</button></p>)
-      )}
-    </div>
+      {
+        estado.frases.map((fraseAtual) =>
+        (<p key={fraseAtual.id}>{fraseAtual.id} - {fraseAtual.texto}
+          <button
+            className="btn-remove"
+            onClick={() =>
+              excluir(fraseAtual)}>Excluir
+          </button>
+        </p>)
+        )
+      }
+    </div >
   );
 }
 
