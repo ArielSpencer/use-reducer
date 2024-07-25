@@ -2,6 +2,8 @@ export const ADICIONAR_FRASE = "ADICIONAR_FRASE"
 export const EXCLUIR_FRASE = "EXCLUIR_FRASE"
 
 const reducer = (estado, acao) => {
+  const novoID = estado.frases.length > 0 ? Math.max(...estado.frases.map(f => f.id)) + 1 : 1;
+
   switch (acao.tipo) {
     case ADICIONAR_FRASE:
       if (acao.frase.length < 20) {
@@ -13,19 +15,24 @@ const reducer = (estado, acao) => {
         return estado
       }
       return {
-        frases: [...estado.frases, { id: estado.idCounter, texto: acao.frase }],
-        idCounter: estado.idCounter + 1
+        frases: [...estado.frases, { id: novoID, texto: acao.frase }],
+        idCounter: estado.idCounter
       };
 
     case EXCLUIR_FRASE:
+      const frasesAtualizadas = estado.frases
+        .filter(frase => frase.id !== acao.frase.id)
+        .map((frase, index) => ({
+          ...frase, id: index + 1
+        }));
+
       return {
-        ...estado,
-        frases: estado.frases.filter(frase => frase.id !== acao.frase.id)
-      }
+        ...estado, frases: frasesAtualizadas
+      };
 
     default:
-      return estado
+      return estado;
   }
-}
+};
 
-export default reducer
+export default reducer;
